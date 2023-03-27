@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Enter Your Email" required>
+            <input type="text" id="pone" placeholder="Phone Number" required>
+            <textarea id="message" rows="4" placeholder="How can we help you?"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "tuhinahmed0966@gmail.com",
+                Password: "01D0346DE57C7C022722310D974BDB240842",
+                To: 'tuhinahmed0966@gamil.com',
+                From: document.getElementById("email").value,
+                Subject: "Feedback",
+                Body: "Name: " + document.getElementById('name').value
+                    + "<br> Email: " + document.getElementById('email').value
+                    + "<br> Phone: " + document.getElementById('phone').value
+                    + "<br> Message: " + document.getElementById('message').value
+            }).then(
+                message => alert("Message Sent Successfull")
+            );
+        }
+    </script>
+</body>
+
+</html>
